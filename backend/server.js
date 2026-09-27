@@ -10,7 +10,12 @@ const orderRoutes = require('./routes/orders');
 
 const app = express();
 
-app.use(cors());
+// UPDATED: This now explicitly allows your Vercel frontend application
+app.use(cors({
+  origin: 'https://miss-ella-w5j5.vercel.app',
+  credentials: true
+}));
+
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
